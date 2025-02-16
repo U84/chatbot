@@ -1,6 +1,7 @@
 # Import necessary libraries
 import streamlit as st
 from openai import OpenAI  # Ensure you install OpenAI: pip install openai
+import os
 
 # Set up the title of the application
 st.title("Chatbot 🤖: Najib + Urvashi")
