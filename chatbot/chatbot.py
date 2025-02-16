@@ -5,12 +5,10 @@ from openai import OpenAI  # Ensure you install OpenAI: pip install openai
 # Set up the title of the application
 st.title("Chatbot 🤖: Najib + Urvashi")
 
-#openaikey = open("/content/drive/MyDrive/openaikey.txt","r").read()
-# TODO: Replace with your actual OpenAI API key
-#OPENAI_API_KEY = "sk-YOUR_API_KEY"
+from dotenv import load_dotenv
 
-# Initialize OpenAI client
-client = OpenAI(api_key="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")
+load_dotenv()  # Load environment variables from .env
+api_key = os.getenv("OPENAI_API_KEY")
 
 # Define a function to get the conversation history (Useful for Part-3)
 def get_conversation() -> str:
