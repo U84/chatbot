@@ -1,18 +1,13 @@
-# Import necessary libraries
 import streamlit as st
-from openai import OpenAI  # Ensure you install OpenAI: pip install openai
+from openai import OpenAI  
 
-# Set up the title of the application
 st.title("Chatbot 🤖: Najib + Urvashi")
 
-#openaikey = open("/content/drive/MyDrive/openaikey.txt","r").read()
-# TODO: Replace with your actual OpenAI API key
-#OPENAI_API_KEY = "sk-YOUR_API_KEY"
+from dotenv import load_dotenv
 
-# Initialize OpenAI client
-client = OpenAI(api_key="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")
+load_dotenv()  # Load environment variables from .env
+api_key = os.getenv("OPENAI_API_KEY")
 
-# Define a function to get the conversation history (Useful for Part-3)
 def get_conversation() -> str:
     """
     Returns a formatted string of the conversation history.
@@ -23,19 +18,16 @@ def get_conversation() -> str:
         conversation += f"{role}: {message['content']}\n"
     return conversation
 
-# Initialize session state variables if not already set
 if "openai_model" not in st.session_state:
     st.session_state.openai_model = "gpt-3.5-turbo"
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display existing chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Wait for user input
 if user_input := st.chat_input("What would you like to chat about?"):
     # Append user input to messages
     st.session_state.messages.append({"role": "user", "content": user_input})
