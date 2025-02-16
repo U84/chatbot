@@ -1,15 +1,11 @@
 # Import necessary libraries
 import streamlit as st
 from openai import OpenAI  # Ensure you install OpenAI: pip install openai
-import os
 
 # Set up the title of the application
 st.title("Chatbot 🤖: Najib + Urvashi")
 
-from dotenv import load_dotenv
-
-load_dotenv()  # Load environment variables from .env
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = st.secrets["OPEN_AI_KEY"]
 client = OpenAI(api_key=api_key)
 
 
