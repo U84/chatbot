@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env
 api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=api_key)
+
 
 # Define a function to get the conversation history (Useful for Part-3)
 def get_conversation() -> str:
